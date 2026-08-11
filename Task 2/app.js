@@ -12,3 +12,16 @@ const getNotes = require("./notes.js")
 
 const msg = getNotes()
 console.log(msg)
+
+// Install npm package - validator
+const validator = require("validator")
+
+// Use a validation function available in validator package
+console.log(validator.isEmail("andrew@example.com"))
+
+console.log(validator.isEmail("example.com"))
+
+// Install npm package - chalk
+const chalk = require("chalk")
+const greenMsg = chalk.green.bold.italic("Success!")
+console.log(greenMsg)
