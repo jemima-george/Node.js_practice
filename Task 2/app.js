@@ -23,5 +23,10 @@ console.log(validator.isEmail("example.com"))
 
 // Install npm package - chalk
 const chalk = require("chalk")
-const greenMsg = chalk.green.bold.italic("Success!")
+const greenMsg = chalk.blue.bold.italic("Success!")
 console.log(greenMsg)
+
+/* Global modules and nodemon
+- Install nodemon as a global npm module to access directly in the system and not just locally in the project.
+- Run node.js file using nodemon as it automatically shows new output after saving changes in code
+*/
