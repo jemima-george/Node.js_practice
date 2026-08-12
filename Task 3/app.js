@@ -8,6 +8,7 @@ argument vector (argv) - returns an array with all arguments provided. */
 const chalk = require("chalk")
 const yargs = require("yargs") // Argument vector parsing with yargs package
 const notes = require("./notes.js")
+const { title } = require("node:process")
 
 // Create add command
 yargs.command({
@@ -51,7 +52,7 @@ yargs.command({
     command: 'list',
     description: 'List all notes',
     handler(){
-        console.log("Listing all notes")
+        notes.listNotes()
     }
 })
 
@@ -59,8 +60,15 @@ yargs.command({
 yargs.command({
     command:'read',
     description: 'Read a note',
-    handler(){
-        console.log("Reading a note")
+    builder:{
+        title:{
+            describe: "Note Title",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        notes.readNote(argv.title)
     }
 })
 
