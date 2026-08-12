@@ -8,9 +8,10 @@ const getNotes = function(){
 const addNote = function (title, body){
     // Load existing notes so that it is not overwritten/deleted
     const notes = loadNotes()
-    const duplicateNotes = notes.filter(function(note){
-        return note.title === title
-    })
+    // const duplicateNotes = notes.filter(function(note){
+    //     return note.title === title
+    // })
+    const duplicateNotes = notes.filter((note) => note.title === title)
 
     // Save note is there is no duplicate note
     if (duplicateNotes.length === 0){
@@ -25,11 +26,10 @@ const addNote = function (title, body){
     }
 }  
 
-const removeNote = function(title){
+const removeNote = (title) => {
     const notes = loadNotes() //Get array of existing notes
-    const notesToKeep = notes.filter(function(note){
-        return note.title !== title
-    })
+    const notesToKeep = notes.filter((note) => note.title !== title)
+
     if(notes.length > notesToKeep.length){
         console.log(chalk.green.inverse("Note removed!"))
         saveNotes(notesToKeep) 
@@ -38,12 +38,12 @@ const removeNote = function(title){
     }
 }
 
-const saveNotes = function (notes){
+const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
 
-const loadNotes = function(){
+const loadNotes = () => {
     // Load notes only if notes.json exists
     try{
         const dataBuffer = fs.readFileSync('notes.json')
