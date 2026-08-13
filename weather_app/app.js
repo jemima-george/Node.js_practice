@@ -11,4 +11,15 @@ request({url:url, json:true}, (error,response) => {
     console.log(results.weather_descriptions[0] + ". It is currently " + results.temperature + " degrees out. It feels like "+ results.feelslike + " degrees out.")
 })
 
+// Geocoding using postionstack - get latitude and longitude of an place
+const geocodeURL = 'https://api.positionstack.com/v1/forward?access_key=' + process.env.POSITION_API_KEY + '&query=Los%20Angeles'
+
+request({url: geocodeURL, json: true}, (error,response) =>{
+    const results = response.body.data[0]
+
+    console.log(
+        "City: " + results.name + ", Latitude: " + results.latitude + ", Longitude: " + results.longitude
+    )
+})
+
 
