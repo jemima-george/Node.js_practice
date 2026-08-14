@@ -6,20 +6,30 @@ const app = express()
 // Home page
 app.get('', (req, res)=>{
     // Send response if someone makes a request
-    res.send('Hello express!')
+    res.send('<h1>Weather HTML Header<h1>')
 })
 
 // Help page
 app.get('/help', (req, res)=>{
-    res.send("Help Page")
+    res.send([{
+        name: 'Damien',
+        age: 34,
+        type: 'JSON Format'
+    }, {
+        name: 'Harrison',
+        age:17
+    }])
 })
 
 app.get('/about', (req,res)=>{
-    res.send('About Page')
+    res.send('<h1>About Page<h1>')
 })
 
 app.get('/weather', (req,res) =>{
-    res.send("Show Weather Forecast")
+    res.send({
+        forecast: 'The current temperature is 32 degrees.',
+        location: "Boston"
+    })
 })
 
 // Start server with listen and port
