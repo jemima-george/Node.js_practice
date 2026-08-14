@@ -51,6 +51,23 @@ app.get('/weather', (req,res) =>{
     })
 })
 
+app.get('/help/*', (req, res)=>{
+    res.render('404', {
+        title: 'Error',
+        name: 'Stacy',
+        errorMessage: 'Help article not found.'
+    })
+})
+
+// Handle URL error - all urls that has not been listed above
+app.get('*', (req,res)=>{
+    res.render('404', {
+        title: 'Error',
+        name: 'Stacy',
+        errorMessage: 'Page not found.'
+    })
+})
+
 // Start server with listen and port
 app.listen(8080, ()=>{
     console.log("Server is up on port 8080.")
