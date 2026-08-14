@@ -1,29 +1,14 @@
+// Path node module to get path to other files
+const path = require("path")
+
 // Express npm package - used to create web servers with node that can serve json data to brower and render it to the screen
-
 const express = require("express")
+
 const app = express()
+const publicDirectoryPath = path.join(__dirname, '../public') 
 
-// Home page
-app.get('', (req, res)=>{
-    // Send response if someone makes a request
-    res.send('<h1>Weather HTML Header<h1>')
-})
-
-// Help page
-app.get('/help', (req, res)=>{
-    res.send([{
-        name: 'Damien',
-        age: 34,
-        type: 'JSON Format'
-    }, {
-        name: 'Harrison',
-        age:17
-    }])
-})
-
-app.get('/about', (req,res)=>{
-    res.send('<h1>About Page<h1>')
-})
+// Web server displays html content in public folder
+app.use(express.static(publicDirectoryPath))
 
 app.get('/weather', (req,res) =>{
     res.send({
