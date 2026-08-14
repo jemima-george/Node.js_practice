@@ -3,17 +3,20 @@ const path = require("path")
 
 // Express npm package - used to create web servers with node that can serve json data to brower and render it to the screen
 const express = require("express")
+const hbs = require("hbs")
 
 const app = express()
 
 // Define Paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public') 
-const viewsPath = path.join(__dirname, '../templates')
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
 
 // Setup handlebars engine and views location
 // Hbs handlebars used to render dynamic content - set express view engine as hbs npm package 
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
 // Web server displays static html content in public folder
 app.use(express.static(publicDirectoryPath))
@@ -36,7 +39,8 @@ app.get('/about', (req,res) =>{
 app.get('/help', (req,res) =>{
     res.render('help', {
         title: 'Help Page',
-        message: 'Contact me if you need any help.'
+        message: 'Contact me if you need any help.',
+        name: 'Stacy'
     })
 })
 
