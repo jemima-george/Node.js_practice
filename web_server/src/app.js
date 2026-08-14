@@ -5,13 +5,17 @@ const path = require("path")
 const express = require("express")
 
 const app = express()
+
+// Define Paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public') 
+const viewsPath = path.join(__dirname, '../templates')
 
-// Hbs handlebars used to render dynamic content
-// Set express view engine as hbs npm package 
+// Setup handlebars engine and views location
+// Hbs handlebars used to render dynamic content - set express view engine as hbs npm package 
 app.set('view engine', 'hbs')
+app.set('views', viewsPath)
 
-// Web server displays html content in public folder
+// Web server displays static html content in public folder
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req,res) => {
