@@ -1,8 +1,44 @@
-h1 {
-    color: rgb(5, 5, 148);
+body {
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 16px;
+    /* Makes the div and footer in index.hbs flexible */
+    display: flex;
+    flex-direction: column;
+    /* Take entire browser height */
+    min-height: 100vh;
 }
 
-img {
-    width: 450px;
-    margin-top: 20px;
+.main-content {
+    /* Main content should take all remaining space */
+    flex-grow: 1; 
 }
+
+footer {
+    color: #6262cb;
+    border-top: 1px solid #3e3880;
+    margin-top: 16px ;
+    padding: 16px 0;
+}
+
+header {
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+
+h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+header a {
+    color: #3e3880;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+.art {
+    width: 450px;
+} 
